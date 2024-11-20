@@ -1,3 +1,5 @@
+package Graph.AddEdge;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -22,22 +24,13 @@ public class Graph {
         return false;
     }
 
-    public boolean addEdge(String vertex1, String vertex2) {
-        if (adjList.get(vertex1) != null && adjList.get(vertex2) != null) {
-            adjList.get(vertex1).add(vertex2);
-            adjList.get(vertex2).add(vertex1);
+	public boolean addEdge(String v1, String v2) {
+        if (adjList.containsKey(v1) && adjList.containsKey(v2)) {
+            adjList.get(v1).add(v2);
+            adjList.get(v2).add(v1);
             return true;
         }
-        return false;
-    }
-
-	public boolean removeEdge(String vertex1, String vertex2) {
-        if (adjList.get(vertex1) != null && adjList.get(vertex2) != null) {
-            adjList.get(vertex1).remove(vertex2);
-            adjList.get(vertex2).remove(vertex1);
-            return true;
-        }
-        return false;
+        else return false;
     }
 
 }

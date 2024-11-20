@@ -1,6 +1,9 @@
+package Graph.RemoveVertex;
+
 import java.util.ArrayList;
 import java.util.HashMap;
-
+import java.util.Iterator;
+import java.util.List;
 
 public class Graph {
 
@@ -31,12 +34,33 @@ public class Graph {
         return false;
     }
 
-	public boolean removeEdge(String vertex1, String vertex2) {
+    public boolean removeEdge(String vertex1, String vertex2) {
         if (adjList.get(vertex1) != null && adjList.get(vertex2) != null) {
             adjList.get(vertex1).remove(vertex2);
             adjList.get(vertex2).remove(vertex1);
             return true;
         }
+        return false;
+    }
+
+    public boolean removeVertex(String vertex) {
+        List<String> result;
+        if (adjList.containsKey(vertex)) {
+            result = adjList.get(vertex);
+            Iterator<String> iterator = result.iterator();
+
+            while (iterator.hasNext()) {
+                String s = iterator.next();
+                if (adjList.containsKey(s)) {
+                    adjList.get(s).remove(vertex);
+                }
+            }
+
+            adjList.remove(vertex);
+
+            return true;
+        }
+
         return false;
     }
 

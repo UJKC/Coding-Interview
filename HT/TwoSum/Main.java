@@ -1,4 +1,4 @@
-package HT.TwoSum;
+package TwoSum;
 
 import java.util.*;
 
